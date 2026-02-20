@@ -1,0 +1,3 @@
+# This file is intentionally left empty.
+# All Pydantic schemas have moved to src/models/schemas.py
+# Import via:  from src.models.schemas import SQLQuery, QueryResult, ...

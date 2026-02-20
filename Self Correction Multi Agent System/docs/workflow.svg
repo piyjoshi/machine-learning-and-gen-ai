@@ -1,0 +1,204 @@
+<svg viewBox="0 0 900 640" xmlns="http://www.w3.org/2000/svg" width="900" style="max-width:100%; background:#0d1117; border-radius:12px;">
+
+  <rect width="900" height="640" fill="#0d1117" rx="12"/>
+
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8b949e"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#f85149"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="450" y="22" text-anchor="middle" fill="#58a6ff" font-size="16" font-weight="bold" font-family="Segoe UI, Arial, sans-serif">Self-Correcting Multi-Agent SQL System</text>
+  <text x="450" y="40" text-anchor="middle" fill="#8b949e" font-size="11" font-family="Segoe UI, Arial, sans-serif">LangGraph State Machine · Hover over any block for details</text>
+
+  <!-- ═══════════════  DB Connectors panel (left) ═══════════════ -->
+  <g>
+    <title>Database Connectors — Lazily-created SQLAlchemy engines for MySQL (pymysql), PostgreSQL (psycopg2), SQLite (built-in), SQL Server (pyodbc), and Oracle (cx_oracle). Connection strings resolved from env vars with safe defaults.</title>
+    <rect x="30" y="52" width="215" height="135" rx="10" fill="#161b22" stroke="#8b949e" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <text x="137" y="70" text-anchor="middle" fill="#8b949e" font-size="11" font-weight="bold" font-family="Segoe UI, Arial, sans-serif">Database Connectors</text>
+    <line x1="40" y1="76" x2="235" y2="76" stroke="#30363d" stroke-width="1"/>
+    <!-- MySQL -->
+    <rect x="40" y="80" width="195" height="19" rx="4" fill="#1a2233" stroke="none"/>
+    <circle cx="54" cy="90" r="4" fill="#00758f"/>
+    <text x="64" y="94" fill="#c9d1d9" font-size="10" font-family="Segoe UI, Arial, sans-serif">MySQL</text>
+    <text x="225" y="94" text-anchor="end" fill="#484f58" font-size="9" font-family="Segoe UI, Arial, sans-serif">pymysql</text>
+    <!-- PostgreSQL -->
+    <rect x="40" y="101" width="195" height="19" rx="4" fill="#161b22" stroke="none"/>
+    <circle cx="54" cy="111" r="4" fill="#336791"/>
+    <text x="64" y="115" fill="#c9d1d9" font-size="10" font-family="Segoe UI, Arial, sans-serif">PostgreSQL</text>
+    <text x="225" y="115" text-anchor="end" fill="#484f58" font-size="9" font-family="Segoe UI, Arial, sans-serif">psycopg2</text>
+    <!-- SQLite -->
+    <rect x="40" y="122" width="195" height="19" rx="4" fill="#1a2233" stroke="none"/>
+    <circle cx="54" cy="132" r="4" fill="#003b57"/>
+    <text x="64" y="136" fill="#c9d1d9" font-size="10" font-family="Segoe UI, Arial, sans-serif">SQLite</text>
+    <text x="225" y="136" text-anchor="end" fill="#484f58" font-size="9" font-family="Segoe UI, Arial, sans-serif">built-in</text>
+    <!-- SQL Server -->
+    <rect x="40" y="143" width="195" height="19" rx="4" fill="#161b22" stroke="none"/>
+    <circle cx="54" cy="153" r="4" fill="#cc2927"/>
+    <text x="64" y="157" fill="#c9d1d9" font-size="10" font-family="Segoe UI, Arial, sans-serif">SQL Server</text>
+    <text x="225" y="157" text-anchor="end" fill="#484f58" font-size="9" font-family="Segoe UI, Arial, sans-serif">pyodbc</text>
+    <!-- Oracle -->
+    <rect x="40" y="164" width="195" height="19" rx="4" fill="#1a2233" stroke="none"/>
+    <circle cx="54" cy="174" r="4" fill="#f80000"/>
+    <text x="64" y="178" fill="#c9d1d9" font-size="10" font-family="Segoe UI, Arial, sans-serif">Oracle</text>
+    <text x="225" y="178" text-anchor="end" fill="#484f58" font-size="9" font-family="Segoe UI, Arial, sans-serif">cx_oracle</text>
+  </g>
+
+  <!-- DB → Planner connector -->
+  <path d="M 245 120 L 270 120 L 270 155 L 300 155" stroke="#8b949e" stroke-width="1.5" stroke-dasharray="4,3" fill="none" marker-end="url(#arrow)"/>
+  <text x="258" y="140" text-anchor="middle" fill="#6e7681" font-size="9" font-family="Segoe UI, Arial, sans-serif">schema</text>
+
+  <!-- ═══════════════  LLM block (right) ═══════════════ -->
+  <g>
+    <title>LLM (Groq) — llama-3.3-70b-versatile via LangChain ChatGroq. Temperature 0. Powers SQL generation, validation, debugging, and answer generation via with_structured_output().</title>
+    <rect x="680" y="120" width="180" height="55" rx="10" fill="#161b22" stroke="#58a6ff" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <text x="770" y="142" text-anchor="middle" fill="#58a6ff" font-size="11" font-weight="bold" font-family="Segoe UI, Arial, sans-serif">LLM (Groq)</text>
+    <text x="770" y="158" text-anchor="middle" fill="#6e7681" font-size="10" font-family="Segoe UI, Arial, sans-serif">llama-3.3-70b-versatile</text>
+  </g>
+  <line x1="600" y1="147" x2="680" y2="147" stroke="#58a6ff" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <!-- ═══════════════  START node ═══════════════ -->
+  <g>
+    <title>START — Entry point. Accepts a natural-language question and the target SQL dialect, then kicks off the Planner node.</title>
+    <circle cx="450" cy="75" r="18" fill="#238636" stroke="#2ea043" stroke-width="2"/>
+    <text x="450" y="80" text-anchor="middle" fill="white" font-size="12" font-weight="bold" font-family="Segoe UI, Arial, sans-serif">START</text>
+  </g>
+  <line x1="450" y1="93" x2="450" y2="120" stroke="#8b949e" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ═══════════════  PLANNER ═══════════════ -->
+  <g>
+    <title>SQL Planner — Converts the user's natural-language question into a valid SQL query. Uses the full database schema as context. Returns a structured SQLQuery (query, explanation, sensitivity flag, dialect). On retries incorporates debugger feedback.</title>
+    <rect x="300" y="120" width="300" height="70" rx="10" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+    <text x="450" y="140" text-anchor="middle" fill="#58a6ff" font-size="14" font-weight="bold" font-family="Segoe UI, Arial, sans-serif">SQL Planner</text>
+    <text x="450" y="158" text-anchor="middle" fill="#8b949e" font-size="11" font-family="Segoe UI, Arial, sans-serif">LLM generates SQL from natural language</text>
+    <text x="450" y="173" text-anchor="middle" fill="#8b949e" font-size="10" font-family="Segoe UI, Arial, sans-serif">Uses schema context · Structured output → SQLQuery</text>
+  </g>
+
+  <!-- Planner → Sensitive? -->
+  <line x1="450" y1="190" x2="450" y2="215" stroke="#8b949e" stroke-width="2" marker-end="url(#arrow)"/>
+  <g>
+    <title>Sensitivity Check — Inspects is_sensitive flag. DELETE/UPDATE/DROP/TRUNCATE/ALTER → Human Approval; otherwise → Executor.</title>
+    <polygon points="450,215 420,240 450,265 480,240" fill="#1f2937" stroke="#f0883e" stroke-width="2"/>
+    <text x="450" y="244" text-anchor="middle" fill="#f0883e" font-size="10" font-weight="bold" font-family="Segoe UI, Arial, sans-serif">Sensitive?</text>
+  </g>
+
+  <!-- YES → Human Approval -->
+  <line x1="420" y1="240" x2="180" y2="240" stroke="#f0883e" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrow)"/>
+  <text x="300" y="232" text-anchor="middle" fill="#f0883e" font-size="10" font-family="Segoe UI, Arial, sans-serif">Yes</text>
+
+  <g>
+    <title>Human Approval Gate — Pauses execution and displays the sensitive query. User types 'yes' to approve; rejected queries terminate immediately. In production: async callback / API webhook.</title>
+    <rect x="50" y="210" width="130" height="60" rx="10" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+    <text x="115" y="234" text-anchor="middle" fill="#f0883e" font-size="12" font-weight="bold" font-family="Segoe UI, Arial, sans-serif">Human</text>
+    <text x="115" y="250" text-anchor="middle" fill="#8b949e" font-size="10" font-family="Segoe UI, Arial, sans-serif">Approval Gate</text>
+  </g>
+
+  <!-- Approved → Executor -->
+  <line x1="115" y1="270" x2="115" y2="350" stroke="#2ea043" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <line x1="115" y1="350" x2="300" y2="350" stroke="#2ea043" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="130" y="315" fill="#2ea043" font-size="9" font-family="Segoe UI, Arial, sans-serif">Approved</text>
+
+  <!-- Rejected → END -->
+  <line x1="50" y1="240" x2="20" y2="240" stroke="#f85149" stroke-width="1.5"/>
+  <line x1="20" y1="240" x2="20" y2="600" stroke="#f85149" stroke-width="1.5"/>
+  <line x1="20" y1="600" x2="420" y2="600" stroke="#f85149" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="30" y="430" fill="#f85149" font-size="9" font-family="Segoe UI, Arial, sans-serif" transform="rotate(90, 30, 430)">Rejected</text>
+
+  <!-- NO → Executor -->
+  <line x1="450" y1="265" x2="450" y2="315" stroke="#2ea043" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="465" y="295" fill="#2ea043" font-size="10" font-family="Segoe UI, Arial, sans-serif">No</text>
+
+  <!-- ═══════════════  EXECUTOR ═══════════════ -->
+  <g>
+    <title>SQL Executor — Executes the SQL against the target database. Checks the LRU query cache (SHA-256 key) first. On cache miss runs query via SQLAlchemy 2.x and caches successful results. Returns tuple(QueryResult, from_cache).</title>
+    <rect x="300" y="315" width="300" height="70" rx="10" fill="#161b22" stroke="#2ea043" stroke-width="2"/>
+    <text x="450" y="338" text-anchor="middle" fill="#2ea043" font-size="14" font-weight="bold" font-family="Segoe UI, Arial, sans-serif">SQL Executor</text>
+    <text x="450" y="356" text-anchor="middle" fill="#8b949e" font-size="11" font-family="Segoe UI, Arial, sans-serif">Runs query via SQLAlchemy</text>
+    <text x="450" y="371" text-anchor="middle" fill="#8b949e" font-size="10" font-family="Segoe UI, Arial, sans-serif">Cache check first → DB fallback → QueryResult</text>
+  </g>
+
+  <!-- Cache block -->
+  <g>
+    <title>Query Cache (LRU) — In-memory LRU cache. Keys: SHA-256(dialect + normalised SQL). 100 MB max. Auto-evicts LRU entries. Avoids redundant DB round-trips. Stats via .stats().</title>
+    <rect x="680" y="315" width="180" height="70" rx="10" fill="#161b22" stroke="#a371f7" stroke-width="2"/>
+    <text x="770" y="338" text-anchor="middle" fill="#a371f7" font-size="12" font-weight="bold" font-family="Segoe UI, Arial, sans-serif">Query Cache</text>
+    <text x="770" y="354" text-anchor="middle" fill="#8b949e" font-size="10" font-family="Segoe UI, Arial, sans-serif">LRU · 100 MB limit</text>
+    <text x="770" y="368" text-anchor="middle" fill="#8b949e" font-size="10" font-family="Segoe UI, Arial, sans-serif">SHA-256 key · Auto-eviction</text>
+  </g>
+  <line x1="600" y1="350" x2="680" y2="350" stroke="#a371f7" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="640" y="343" fill="#a371f7" font-size="9" font-family="Segoe UI, Arial, sans-serif">hit/miss</text>
+
+  <!-- Executor → Validator -->
+  <line x1="450" y1="385" x2="450" y2="425" stroke="#8b949e" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ═══════════════  VALIDATOR ═══════════════ -->
+  <g>
+    <title>Result Validator — Two-stage: (1) Quick programmatic checks — execution success, empty results, errors. (2) LLM semantic validation — checks if rows actually answer the question, detects incorrect aggregations, missing columns, nonsensical data.</title>
+    <rect x="300" y="425" width="300" height="70" rx="10" fill="#161b22" stroke="#d2a8ff" stroke-width="2"/>
+    <text x="450" y="448" text-anchor="middle" fill="#d2a8ff" font-size="14" font-weight="bold" font-family="Segoe UI, Arial, sans-serif">Result Validator</text>
+    <text x="450" y="466" text-anchor="middle" fill="#8b949e" font-size="11" font-family="Segoe UI, Arial, sans-serif">Quick checks + LLM semantic validation</text>
+    <text x="450" y="481" text-anchor="middle" fill="#8b949e" font-size="10" font-family="Segoe UI, Arial, sans-serif">Checks emptiness · aggregation · column presence</text>
+  </g>
+
+  <!-- Validator → Valid? -->
+  <line x1="450" y1="495" x2="450" y2="518" stroke="#8b949e" stroke-width="2" marker-end="url(#arrow)"/>
+  <g>
+    <title>Validation Decision — If failed AND retries remain → Debugger. If valid → Answer Generator. If retries exhausted → END.</title>
+    <polygon points="450,518 420,543 450,568 480,543" fill="#1f2937" stroke="#f0883e" stroke-width="2"/>
+    <text x="450" y="547" text-anchor="middle" fill="#f0883e" font-size="10" font-weight="bold" font-family="Segoe UI, Arial, sans-serif">Valid?</text>
+  </g>
+
+  <!-- ═══════════════  DEBUGGER ═══════════════ -->
+  <g>
+    <title>Debugger — Root-cause analysis on the failed query. Receives original SQL, execution errors, and validation issues. Uses LLM to produce a corrected SQL query. Increments retry_count. Loops back to Executor.</title>
+    <rect x="680" y="430" width="180" height="65" rx="10" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+    <text x="770" y="453" text-anchor="middle" fill="#f85149" font-size="12" font-weight="bold" font-family="Segoe UI, Arial, sans-serif">Debugger</text>
+    <text x="770" y="469" text-anchor="middle" fill="#8b949e" font-size="10" font-family="Segoe UI, Arial, sans-serif">Root cause analysis</text>
+    <text x="770" y="483" text-anchor="middle" fill="#8b949e" font-size="10" font-family="Segoe UI, Arial, sans-serif">LLM corrects SQL query</text>
+  </g>
+
+  <!-- Invalid → Debugger (bent arrow) -->
+  <path d="M 480 543 L 770 543 L 770 495" stroke="#f85149" stroke-width="2" stroke-dasharray="6,3" fill="none" marker-end="url(#arrowRed)"/>
+  <text x="620" y="558" text-anchor="middle" fill="#f85149" font-size="10" font-family="Segoe UI, Arial, sans-serif">Invalid (retries &lt; 3)</text>
+
+  <!-- Debugger → Executor (retry loop) -->
+  <line x1="860" y1="462" x2="890" y2="462" stroke="#f85149" stroke-width="1.5"/>
+  <line x1="890" y1="462" x2="890" y2="350" stroke="#f85149" stroke-width="1.5"/>
+  <line x1="890" y1="350" x2="870" y2="350" stroke="#f85149" stroke-width="1.5"/>
+  <path d="M 870 350 L 860 350" stroke="#f85149" stroke-width="1.5" marker-end="url(#arrowRed)"/>
+  <text x="878" y="405" fill="#f85149" font-size="9" font-family="Segoe UI, Arial, sans-serif" transform="rotate(-90, 878, 405)">Retry</text>
+
+  <!-- Valid → Answer -->
+  <line x1="450" y1="568" x2="450" y2="590" stroke="#2ea043" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="435" y="583" fill="#2ea043" font-size="10" font-family="Segoe UI, Arial, sans-serif">Yes</text>
+
+  <!-- ═══════════════  ANSWER GENERATOR ═══════════════ -->
+  <g>
+    <title>Answer Generator — Takes validated SQL results and converts them into a clear, natural-language answer with key insights and numbers. Summarises up to 20 rows.</title>
+    <rect x="350" y="590" width="200" height="50" rx="10" fill="#161b22" stroke="#79c0ff" stroke-width="2"/>
+    <text x="450" y="611" text-anchor="middle" fill="#79c0ff" font-size="13" font-weight="bold" font-family="Segoe UI, Arial, sans-serif">Answer Generator</text>
+    <text x="450" y="628" text-anchor="middle" fill="#8b949e" font-size="10" font-family="Segoe UI, Arial, sans-serif">LLM converts results → NL answer</text>
+  </g>
+
+  <!-- END node -->
+  <g>
+    <title>END — Terminal node. Reached after Answer Generator, rejected approval, or max retries exhausted.</title>
+    <circle cx="450" cy="628" r="5" fill="#f85149" stroke="#f85149" stroke-width="2"/>
+  </g>
+
+  <!-- Legend -->
+  <text x="100" y="639" fill="#58a6ff" font-size="10" font-family="Segoe UI, Arial, sans-serif">■ Planner/LLM</text>
+  <text x="210" y="639" fill="#2ea043" font-size="10" font-family="Segoe UI, Arial, sans-serif">■ Executor</text>
+  <text x="295" y="639" fill="#d2a8ff" font-size="10" font-family="Segoe UI, Arial, sans-serif">■ Validator</text>
+  <text x="385" y="639" fill="#f85149" font-size="10" font-family="Segoe UI, Arial, sans-serif">■ Debugger/Error</text>
+  <text x="510" y="639" fill="#f0883e" font-size="10" font-family="Segoe UI, Arial, sans-serif">■ Decision/Approval</text>
+  <text x="660" y="639" fill="#a371f7" font-size="10" font-family="Segoe UI, Arial, sans-serif">■ Cache</text>
+  <text x="730" y="639" fill="#79c0ff" font-size="10" font-family="Segoe UI, Arial, sans-serif">■ Answer</text>
+  <text x="810" y="639" fill="#6e7681" font-size="10" font-family="Segoe UI, Arial, sans-serif">⬚ External</text>
+
+</svg>

@@ -1,0 +1,26 @@
+# ───────────────────────────────────────────────────────────
+# Self-Correcting SQL Agent — Settings
+# ───────────────────────────────────────────────────────────
+# Override any value via the corresponding env var or by
+# editing this file directly.
+
+llm:
+  provider: groq                        # groq | openai
+  model: llama-3.3-70b-versatile        # env: LLM_MODEL
+  temperature: 0.0                      # env: LLM_TEMPERATURE
+
+cache:
+  max_size_mb: 100                      # LRU cache ceiling
+
+agent:
+  max_retries: 3                        # debug-retry budget
+  default_dialect: MySQL                # MySQL | PostgreSQL | SQLite | SQL Server | Oracle
+
+# Connection strings — prefer env vars (.env) for secrets.
+# These defaults are used only when the env var is unset.
+databases:
+  MySQL:      "mysql+pymysql://user:password@localhost/dbname"
+  PostgreSQL: "postgresql+psycopg2://user:password@localhost/dbname"
+  SQLite:     "sqlite:///./database.db"
+  SQL Server: "mssql+pyodbc://user:password@localhost/dbname?driver=ODBC+Driver+17+for+SQL+Server"
+  Oracle:     "oracle+cx_oracle://user:password@localhost:1521/dbname"
