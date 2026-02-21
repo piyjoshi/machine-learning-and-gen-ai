@@ -1,0 +1,27 @@
+# ─── LLM Configuration ─────────────────────────────────────
+llm:
+  provider: groq                       # groq | openai
+  primary_model: llama-3.3-70b-versatile
+  fallback_model: llama-3.1-8b-instant
+  temperature: 0.4
+
+# ─── Retry / Rate-limit ───────────────────────────────────
+retry:
+  max_attempts: 3
+  base_delay_seconds: 10               # exponential back-off: 10 → 20 → 40
+
+# ─── Search Configuration ─────────────────────────────────
+search:
+  max_results_per_query: 5
+  search_depth: advanced               # basic | advanced
+  max_search_rounds: 3                 # recursive drill-down rounds
+
+# ─── Agent Configuration ──────────────────────────────────
+agent:
+  num_research_agents: 3               # parallel research sub-agents
+  include_charts: true                 # generate Matplotlib charts
+
+# ─── Report Configuration ─────────────────────────────────
+report:
+  output_dir: reports
+  format: html                         # html (self-contained)
